@@ -1,0 +1,11 @@
+Started by user [8mha:////4Be2RDJBHRqL/LqG10235oHuiF1PkjhIUySXQ2CRlU9qAAAAlh+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAz2EgYu/dLi1CL9xKzMEgAN7TC8vwAAAA==[0mAjit cs
+Running as SYSTEM
+Building remotely on [8mha:////4J9yBX2dVDhotWy2UDzZRArZsLO+Exr0p2D4+feADvwuAAAAmR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyWEgY+/eT83ILSktQi/TygOwHwYj8LwwAAAA==[0mnode in workspace C:\Users\Ajit\eclipse-workspace\SeleniumAutomationFramework\volumes\node\workspace\pipeline
+[pipeline] $ cmd /c call C:\Users\Ajit\AppData\Local\Temp\jenkins3464338747382473396.bat
+
+C:\Users\Ajit\eclipse-workspace\SeleniumAutomationFramework\volumes\node\workspace\pipeline>docker ps 
+CONTAINER ID   IMAGE                 COMMAND                  CREATED        STATUS          PORTS                                              NAMES
+d1129064553f   jenkins/jenkins:lts   "/usr/bin/tini -- /u…"   22 hours ago   Up 59 minutes   0.0.0.0:8080->8080/tcp, 0.0.0.0:50000->50000/tcp   seleniumautomationframework-jenkins-1
+
+C:\Users\Ajit\eclipse-workspace\SeleniumAutomationFramework\volumes\node\workspace\pipeline>exit 0 
+Finished: SUCCESS

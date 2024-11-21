@@ -1,0 +1,85 @@
+networks:
+   grid:
+      driver: bridge
+
+services:
+   selenium-hub:
+      image: selenium/hub:latest
+      container_name: selenium-hub
+      ports:
+      - 4442-4444:4442-4444
+      networks:
+      - grid
+      restart: always
+
+   firefox:
+      image: selenium/node-firefox:latest
+      shm_size: 2g
+      environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_VNC_NO_PASSWORD=1
+      networks:
+      - grid
+      
+      depends_on:
+      - selenium-hub
+      restart: on-failure:3
+
+   chrome:
+      image: selenium/node-chrome:latest
+      shm_size: 2g
+      environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_VNC_NO_PASSWORD=1
+      networks:
+      - grid
+      
+      depends_on:
+      - selenium-hub
+      restart: on-failure:3
+
+   elasticsearch:
+      image: elasticsearch:7.17.23
+      container_name: elasticsearch
+      environment:
+      - discovery.type=single-node
+      ports:
+      - 9200:9200
+      - 9300:9300
+      networks:
+      - grid
+      restart: always
+
+   kibana:
+      image: docker.elastic.co/kibana/kibana:7.17.23
+      container_name: kibana
+      environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      ports:
+      - 5601:5601
+      networks:
+      - grid
+      depends_on:
+      - elasticsearch
+      restart: always
+
+   testframework-container:
+      image: ajitdocker/selenium
+      depends_on:
+      - selenium-hub
+      - kibana
+      environment:
+      - BROWSER=chrome
+      - HUB_HOST=selenium-hub
+      - THREAD_COUNT=1
+      - TEST_SUITE=testng.xml
+      volumes:
+      - ./dockerOutput/result:/home/selenium-docker/test-output
+      - ./dockerOutput/result:/home/selenium-docker/extent-output
+      networks:
+      - grid
+      restart: "no"
