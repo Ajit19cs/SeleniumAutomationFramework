@@ -1,0 +1,80 @@
+# Bytecode files
+*.class
+
+# Log files
+*.log
+*.out
+
+# Package files
+*.jar
+*.war
+*.ear
+
+# Maven and Gradle directories
+/target/
+/build/
+/*.iml
+/.idea/
+/.gradle/
+/settings.gradle
+/build.gradle
+/.mvn/
+/.mvn/wrapper/maven-wrapper.jar
+
+# Eclipse-specific files
+.project
+.classpath
+.settings/
+
+# IntelliJ IDEA-specific files
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Test Reports
+/reports/
+/test-output/
+/extent-reports/
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+
+# System-specific files
+.DS_Store
+Thumbs.db
+
+# Logs and Debug files
+*.log
+*.pid
+
+# Selenium specific
+.selenium-server/
+chromedriver.log
+geckodriver.log
+
+# OS Generated Files
+Icon?
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Coverage reports
+/coverage/
+/jacoco.exec
+
+# Environment files
+.env
+
+
+
+# Miscellaneous
+.idea/
+*.iml
+*.bak
+*.tmp
+*.old
+*.orig
