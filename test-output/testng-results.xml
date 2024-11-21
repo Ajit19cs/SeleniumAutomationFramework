@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-11-17T23:08:01 IST" name="Suite" finished-at="2024-11-17T23:08:09 IST" duration-ms="7395">
+    <groups>
+    </groups>
+    <test started-at="2024-11-17T23:08:01 IST" name="Test" finished-at="2024-11-17T23:08:09 IST" duration-ms="7395">
+      <class name="com.cs.tests.GetTitleTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.cs.tests.GetTitleTest@4681c175]" started-at="2024-11-17T23:08:02 IST" name="setup" finished-at="2024-11-17T23:08:05 IST" duration-ms="3555" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="testgetTitle()[pri:0, instance:com.cs.tests.GetTitleTest@4681c175]" started-at="2024-11-17T23:08:05 IST" name="testgetTitle" description="this is get title" finished-at="2024-11-17T23:08:05 IST" duration-ms="33" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testgetTitle -->
+        <test-method is-config="true" signature="teardown()[pri:0, instance:com.cs.tests.GetTitleTest@4681c175]" started-at="2024-11-17T23:08:05 IST" name="teardown" finished-at="2024-11-17T23:08:05 IST" duration-ms="151" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.cs.tests.GetTitleTest@4681c175]" started-at="2024-11-17T23:08:05 IST" name="setup" finished-at="2024-11-17T23:08:08 IST" duration-ms="2264" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="testgetTitles()[pri:0, instance:com.cs.tests.GetTitleTest@4681c175]" started-at="2024-11-17T23:08:08 IST" name="testgetTitles" description="this is get titles" finished-at="2024-11-17T23:08:08 IST" duration-ms="186" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testgetTitles -->
+        <test-method is-config="true" signature="teardown()[pri:0, instance:com.cs.tests.GetTitleTest@4681c175]" started-at="2024-11-17T23:08:08 IST" name="teardown" finished-at="2024-11-17T23:08:08 IST" duration-ms="173" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+      </class> <!-- com.cs.tests.GetTitleTest -->
+      <class name="com.cs.tests.AmazoneTestCase">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.cs.tests.AmazoneTestCase@353352b6]" started-at="2024-11-17T23:08:02 IST" name="setup" finished-at="2024-11-17T23:08:05 IST" duration-ms="3530" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="testAmazoneFlow()[pri:0, instance:com.cs.tests.AmazoneTestCase@353352b6]" started-at="2024-11-17T23:08:05 IST" name="testAmazoneFlow" description="this is amazon Menu buton click flow" finished-at="2024-11-17T23:08:08 IST" duration-ms="3137" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAmazoneFlow -->
+        <test-method is-config="true" signature="teardown()[pri:0, instance:com.cs.tests.AmazoneTestCase@353352b6]" started-at="2024-11-17T23:08:08 IST" name="teardown" finished-at="2024-11-17T23:08:09 IST" duration-ms="147" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+      </class> <!-- com.cs.tests.AmazoneTestCase -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>
