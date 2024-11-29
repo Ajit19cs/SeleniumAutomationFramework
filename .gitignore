@@ -36,11 +36,20 @@
 /reports/
 /test-output/
 /extent-reports/
+/dockerOutput/
 
 # Temporary files
 *.tmp
 *.temp
 *.swp
+
+# Ignoring cache files
+volumes/master/caches/
+
+# Ignoring all files in the spark folder
+spark/*
+
+
 
 # System-specific files
 .DS_Store
@@ -78,3 +87,4 @@ $RECYCLE.BIN/
 *.tmp
 *.old
 *.orig
+"volumes/" 
