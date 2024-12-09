@@ -10,13 +10,13 @@ pipeline {
         
         stage('Build image ') {
             steps {
-                bat "docker build -t ajitdocker/selenium ."
+                bat "docker build -t ajit19cs/selenium ."
             }
         }
         
         stage('Build push ') {
             steps {
-                bat "docker push ajitdocker/selenium"
+                bat "docker push ajit19cs/selenium"
             }
         }
         
