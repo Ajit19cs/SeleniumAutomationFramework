@@ -7,29 +7,46 @@ pipeline {
     }
 
     stages {
-        stage('Build Jar') {
+        stage('Build project') {
+            steps {
+                bat "mvn clean package -DskipTests"
+            }
+        }
+        
+        stage('Validate and Set Docker Context') {
             steps {
                 script {
-                    docker.image('maven:3.9.3-eclipse-temurin-17-focal').inside {
-                        sh 'mvn clean package -DskipTests'
+                    // Check the current Docker context
+                    def currentContext = bat(returnStdout: true, script: 'docker context show').trim()
+
+                    // Set the context to 'default' if it's not already set
+                    if (currentContext != 'default') {
+                        echo "Docker context is set to '${currentContext}', switching to 'default'."
+                        bat 'docker context use default'
+                    } else {
+                        echo "Docker context is already set to 'default'."
                     }
                 }
             }
         }
-
-        stage('Build Image') {
+        
+        
+        
+        
+        
+        
+        
+        stage('Build image') {
             steps {
-                script {
-                    app = docker.build('ajit19cs/selenium')
-                }
+                bat "docker build -t ${DOCKER_IMAGE} ."
             }
         }
-
-        stage('Push Image') {
+        
+        stage('Push image') {
             steps {
                 script {
-                    docker.withRegistry('', 'dockerhub-creds') {
-                        app.push("latest")
+                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_CREDENTIALS) {
+                        bat "docker push ${DOCKER_IMAGE}"
                     }
                 }
             }
