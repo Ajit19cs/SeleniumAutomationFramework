@@ -13,6 +13,29 @@ pipeline {
             }
         }
         
+        stage('Validate and Set Docker Context') {
+            steps {
+                script {
+                    // Check the current Docker context
+                    def currentContext = bat(returnStdout: true, script: 'docker context show').trim()
+
+                    // Set the context to 'default' if it's not already set
+                    if (currentContext != 'default') {
+                        echo "Docker context is set to '${currentContext}', switching to 'default'."
+                        bat 'docker context use default'
+                    } else {
+                        echo "Docker context is already set to 'default'."
+                    }
+                }
+            }
+        }
+        
+        
+        
+        
+        
+        
+        
         stage('Build image') {
             steps {
                 bat "docker build -t ${DOCKER_IMAGE} ."
