@@ -1,55 +1,35 @@
 pipeline {
-    agent any
-
-    environment {
-        DOCKER_CREDENTIALS = 'dockerhub-creds' // Your Jenkins credentials ID for Docker Hub
-        DOCKER_IMAGE = 'ajit19cs/selenium'
-    }
-
+    agent none
     stages {
-        stage('Build project') {
+        stage('Build Jar') {
+            agent {
+                docker {
+                    image 'maven:3.9.3-eclipse-temurin-17-focal'
+                    args '-u root -v /tmp/m2:/root/.m2'
+                }
+            }
             steps {
-                bat "mvn clean package -DskipTests"
+                sh 'mvn clean package -DskipTests'
             }
         }
-        
-        stage('Validate and Set Docker Context') {
+        stage('Build Image') {
             steps {
                 script {
-                    // Check the current Docker context
-                    def currentContext = bat(returnStdout: true, script: 'docker context show').trim()
+                    app = docker.build('ajit19cs/selenium')
+                }
+            }
+        }
 
-                    // Set the context to 'default' if it's not already set
-                    if (currentContext != 'default') {
-                        echo "Docker context is set to '${currentContext}', switching to 'default'."
-                        bat 'docker context use default'
-                    } else {
-                        echo "Docker context is already set to 'default'."
-                    }
-                }
-            }
-        }
-        
-        
-        
-        
-        
-        
-        
-        stage('Build image') {
-            steps {
-                bat "docker build -t ${DOCKER_IMAGE} ."
-            }
-        }
-        
-        stage('Push image') {
-            steps {
+        stage('Push Image'){
+            steps{
                 script {
-                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_CREDENTIALS) {
-                        bat "docker push ${DOCKER_IMAGE}"
+                    // registry url is blank for dockerhub
+                    docker.withRegistry('', 'dockerhub-creds') {
+                        app.push("latest")
                     }
                 }
             }
         }
+
     }
 }
