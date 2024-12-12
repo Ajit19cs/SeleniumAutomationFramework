@@ -68,7 +68,7 @@ services:
       restart: always
 
    testframework-container:
-      image: ajitdocker/selenium
+      image: ajit19cs/selenium
       depends_on:
       - selenium-hub
       - kibana
