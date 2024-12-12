@@ -4,6 +4,7 @@ pipeline {
     environment {
         DOCKER_CREDENTIALS = 'dockerhub-creds' // Your Jenkins credentials ID for Docker Hub
         DOCKER_IMAGE = 'ajit19cs/selenium'
+        DOCKER_TAG = "${env.BUILD_NUMBER}" // Use Jenkins build number as the tag
     }
 
     stages {
@@ -30,15 +31,11 @@ pipeline {
             }
         }
         
-        
-        
-        
-        
-        
-        
         stage('Build image') {
             steps {
-                bat "docker build -t ${DOCKER_IMAGE} ."
+                script {
+                    bat "docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} ."
+                }
             }
         }
         
@@ -46,7 +43,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', DOCKER_CREDENTIALS) {
-                        bat "docker push ${DOCKER_IMAGE}"
+                        bat "docker push ${DOCKER_IMAGE}:${DOCKER_TAG}"
                     }
                 }
             }
